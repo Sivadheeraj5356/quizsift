@@ -85,8 +85,102 @@ var TEMPLATES = {
       {min:13,max:18,title:"Strong setup",desc:"You cover the basics. Now test headlines and offers systematically.",cta:null}
     ],
     lead:{on:false,endpoint:"",askmsg:true}
+  },
+  coursefit: {
+    v:1,
+    title:"Is this course right for you?",
+    desc:"Answer 5 questions and see whether this course matches where you are right now.",
+    questions:[
+      {q:"How much experience do you already have with this topic?",opts:[
+        {t:"None - starting from zero",p:1},{t:"Some basics",p:2},{t:"Working knowledge",p:3},{t:"Advanced",p:4}]},
+      {q:"How many hours a week can you give it?",opts:[
+        {t:"Under 1 hour",p:0},{t:"1-3 hours",p:2},{t:"3-5 hours",p:3},{t:"5+ hours",p:4}]},
+      {q:"How clear is your goal?",opts:[
+        {t:"Still figuring it out",p:1},{t:"General direction",p:2},{t:"Specific outcome in mind",p:4}]},
+      {q:"How do you learn best?",opts:[
+        {t:"Watching and following along",p:3},{t:"Reading at my own pace",p:3},{t:"Doing projects",p:3},{t:"I struggle to finish self-paced material",p:1}]},
+      {q:"Have you finished an online course before?",opts:[
+        {t:"Yes, several",p:4},{t:"One or two",p:3},{t:"Started but never finished",p:1},{t:"Never tried",p:2}]}
+    ],
+    outcomes:[
+      {min:0,max:7,title:"Not the right moment",desc:"You would likely get more from free intro material first. Come back when your weekly time and goal are clearer.",cta:null},
+      {min:8,max:12,title:"A good fit with one caveat",desc:"You have the background and goal. Block weekly time on your calendar before you enroll - that is the part most people skip.",cta:{label:"See the course outline",url:""}},
+      {min:13,max:19,title:"Strong fit",desc:"Your experience, time and goal all line up. You are exactly who gets the most out of this course.",cta:{label:"Enroll now",url:""}}
+    ],
+    lead:{on:false,endpoint:"",askmsg:true}
+  },
+  servicepick: {
+    v:1,
+    title:"Which service package fits your business?",
+    desc:"Five questions, one honest recommendation - no sales call required.",
+    questions:[
+      {q:"Where is your business right now?",opts:[
+        {t:"Just starting out",p:1},{t:"Steady but small",p:2},{t:"Growing fast",p:3},{t:"Established, optimizing",p:4}]},
+      {q:"What is your biggest bottleneck?",opts:[
+        {t:"Getting found",p:2},{t:"Converting interest into sales",p:3},{t:"Delivering on time",p:3},{t:"Keeping customers",p:4}]},
+      {q:"How much can you invest monthly?",opts:[
+        {t:"Very little right now",p:1},{t:"A modest budget",p:2},{t:"A real budget",p:3},{t:"Whatever moves the needle",p:4}]},
+      {q:"How do you like to work with outside help?",opts:[
+        {t:"Teach me and I will do it",p:1},{t:"Do it with me",p:2},{t:"Do it for me",p:4}]},
+      {q:"How soon do you need results?",opts:[
+        {t:"No rush, building steadily",p:1},{t:"This quarter",p:3},{t:"Yesterday",p:4}]}
+    ],
+    outcomes:[
+      {min:0,max:7,title:"Essentials",desc:"Start with the Essentials package: a focused setup and a playbook you can run yourself while budget is tight.",cta:{label:"See Essentials",url:""}},
+      {min:8,max:13,title:"Growth",desc:"The Growth package pairs you with hands-on help on your biggest bottleneck, without committing to a full retainer.",cta:{label:"See Growth",url:""}},
+      {min:14,max:19,title:"Partner",desc:"You are ready for the Partner package: a dedicated team running the work end to end while you steer.",cta:{label:"Book an intro call",url:""}}
+    ],
+    lead:{on:false,endpoint:"",askmsg:true}
+  },
+  onboardfirst: {
+    v:1,
+    title:"What should you set up first in your business?",
+    desc:"Six questions that turn a messy launch list into one clear first step.",
+    questions:[
+      {q:"How do new customers find you today?",opts:[
+        {t:"They do not yet",p:0},{t:"Word of mouth only",p:2},{t:"One channel that works",p:3},{t:"Several channels",p:4}]},
+      {q:"When someone is interested, what happens next?",opts:[
+        {t:"I hope they message me",p:0},{t:"They email or DM me",p:2},{t:"A form captures their details",p:3},{t:"An automated flow follows up",p:4}]},
+      {q:"How do you track your work and tasks?",opts:[
+        {t:"In my head",p:0},{t:"Scattered notes",p:1},{t:"One to-do system",p:3},{t:"A system my whole team uses",p:4}]},
+      {q:"How do you get paid?",opts:[
+        {t:"I have not charged anyone yet",p:0},{t:"Manual invoices or transfers",p:2},{t:"Payment links",p:3},{t:"Automated billing",p:4}]},
+      {q:"How do customers get help after buying?",opts:[
+        {t:"They cannot easily",p:0},{t:"They message me directly",p:2},{t:"A shared inbox",p:3},{t:"A help desk with tracked tickets",p:4}]},
+      {q:"Do you know your numbers from last month?",opts:[
+        {t:"No idea",p:0},{t:"Rough sense",p:1},{t:"I track the basics",p:3},{t:"A dashboard I check weekly",p:4}]}
+    ],
+    outcomes:[
+      {min:0,max:7,title:"Start with being findable",desc:"Nothing else matters until strangers can find you and tell you they are interested. Set up one channel and one way to capture enquiries this week.",cta:null},
+      {min:8,max:15,title:"Fix the follow-through",desc:"People find you, but work slips. Put a single task system and a payment link in place before adding anything new.",cta:null},
+      {min:16,max:24,title:"Systemize what works",desc:"Your basics run. Now automate follow-up and start tracking a few weekly numbers so growth does not depend on memory.",cta:null}
+    ],
+    lead:{on:false,endpoint:"",askmsg:true}
+  },
+  contentprefs: {
+    v:1,
+    title:"What should we actually send you?",
+    desc:"Four questions so you only get the emails you will open.",
+    questions:[
+      {q:"What do you want more of?",opts:[
+        {t:"Practical how-tos",p:2},{t:"Industry news in plain language",p:2},{t:"Case studies and results",p:3},{t:"Offers and product updates",p:1}]},
+      {q:"How often is welcome?",opts:[
+        {t:"Monthly is plenty",p:1},{t:"Every two weeks",p:2},{t:"Weekly",p:3},{t:"Whenever it is good",p:3}]},
+      {q:"How deep should it go?",opts:[
+        {t:"Quick tips I can use in minutes",p:1},{t:"A solid read with examples",p:2},{t:"Deep dives with data",p:3}]},
+      {q:"How experienced are you with this topic?",opts:[
+        {t:"Beginner",p:1},{t:"Intermediate",p:2},{t:"Advanced",p:3}]}
+    ],
+    outcomes:[
+      {min:4,max:6,title:"The occasional digest",desc:"You will get a short monthly roundup - the highlights, nothing else.",cta:null},
+      {min:7,max:9,title:"The practical weekly",desc:"Expect one useful, example-led email a week. Skimmable in three minutes.",cta:null},
+      {min:10,max:12,title:"The deep diver",desc:"You will get the full breakdowns - data, examples and templates - as they are published.",cta:null}
+    ],
+    lead:{on:false,endpoint:"",askmsg:true}
   }
 };
+
+var TEMPLATE_LABELS = {leadqual:"Lead qualification",productrec:"Product recommendation",webaudit:"Website audit",coursefit:"Course fit",servicepick:"Service package picker",onboardfirst:"First setup priorities",contentprefs:"Subscriber preferences"};
 
 /* ---------- utils ---------- */
 function el(id){return document.getElementById(id);}
@@ -111,6 +205,48 @@ function shareUrlFor(quiz){
   return base + "index.html#/q/" + encodeQuiz(quiz);
 }
 
+function sanitizeQuiz(q){
+  if(!q||typeof q!=="object")return null;
+  if(!Array.isArray(q.questions)||!q.questions.length)return null;
+  if(!Array.isArray(q.outcomes)||!q.outcomes.length)return null;
+  var out={v:1,title:String(q.title||"").slice(0,120),desc:String(q.desc||"").slice(0,400),questions:[],outcomes:[],lead:{on:false,endpoint:"",askmsg:true}};
+  for(var i=0;i<q.questions.length&&i<40;i++){
+    var qq=q.questions[i];if(!qq||!Array.isArray(qq.opts))return null;
+    var nq={q:String(qq.q||"").slice(0,200),opts:[]};
+    for(var j=0;j<qq.opts.length&&j<6;j++){
+      var o=qq.opts[j];if(!o)continue;
+      nq.opts.push({t:String(o.t||"").slice(0,120),p:Math.max(-20,Math.min(20,parseInt(o.p,10)||0))});
+    }
+    if(nq.opts.length<2)return null;
+    out.questions.push(nq);
+  }
+  for(var k=0;k<q.outcomes.length&&k<12;k++){
+    var oo=q.outcomes[k];if(!oo)return null;
+    var no={min:parseInt(oo.min,10)||0,max:parseInt(oo.max,10)||0,title:String(oo.title||"").slice(0,100),desc:String(oo.desc||"").slice(0,400),cta:null};
+    if(oo.cta&&oo.cta.url&&/^https:\/\//.test(oo.cta.url))no.cta={label:String(oo.cta.label||"Next step").slice(0,40),url:String(oo.cta.url).slice(0,500)};
+    out.outcomes.push(no);
+  }
+  if(q.lead&&q.lead.on&&/^https:\/\/.+/.test(String(q.lead.endpoint||""))){
+    out.lead={on:true,endpoint:String(q.lead.endpoint).slice(0,500),askmsg:q.lead.askmsg!==false};
+  }
+  return out;
+}
+function importQuiz(src){
+  src=String(src||"").trim();
+  if(!src)return {err:"Paste a share link or quiz JSON first."};
+  var q=null;
+  var m=src.match(/#\/q\/([A-Za-z0-9_-]+)/);
+  try{
+    if(src.charAt(0)==="{"){q=JSON.parse(src);}
+    else if(m){q=decodeQuiz(m[1]);}
+    else if(/^[A-Za-z0-9_-]+$/.test(src)&&src.length>20){q=decodeQuiz(src);}
+    else return {err:"That does not look like a QuizSift share link or quiz JSON."};
+  }catch(e){return {err:"Could not read that quiz - check it is complete and try again."};}
+  var clean=sanitizeQuiz(q);
+  if(!clean)return {err:"That data is not a valid QuizSift quiz."};
+  return {quiz:clean};
+}
+
 /* ---------- builder state ---------- */
 var draft = null;
 function blankQuiz(){
@@ -127,10 +263,17 @@ function renderBuilder(root){
   h += '<h1 style="font-size:30px;margin:0 0 4px">Build your scored quiz</h1>';
   h += '<p class="muted">Everything runs in your browser. Your quiz is stored inside its share link - there is no account and no database on our side.</p>';
   h += '<div class="card"><h3 style="margin-top:0">Start from a template</h3><div class="row">';
-  h += '<button class="btn ghost small" data-tpl="leadqual">Lead qualification</button>';
-  h += '<button class="btn ghost small" data-tpl="productrec">Product recommendation</button>';
-  h += '<button class="btn ghost small" data-tpl="webaudit">Website audit</button>';
+  Object.keys(TEMPLATE_LABELS).forEach(function(k){ h += '<button class="btn ghost small" data-tpl="'+k+'">'+TEMPLATE_LABELS[k]+'</button>'; });
   h += '</div></div>';
+
+  h += '<div class="card"><h3 style="margin-top:0">Import / export</h3>';
+  h += '<p class="muted" style="font-size:13px;margin-top:0">Keep a backup or move a quiz between browsers. Export is the same data that lives inside a share link.</p>';
+  h += '<div class="row"><button class="btn ghost small" id="exp-copy">Copy quiz JSON</button>';
+  h += '<button class="btn ghost small" id="exp-dl">Download .json</button></div>';
+  h += '<label style="margin-top:12px">Paste a QuizSift share link or quiz JSON to load it back into the builder</label>';
+  h += '<textarea id="imp-src" style="min-height:70px" placeholder="https://...index.html#/q/eyJ...  or  {\"v\":1,...}"></textarea>';
+  h += '<div class="row"><button class="btn ghost small" id="imp-btn">Load into builder</button></div>';
+  h += '<div id="imp-err"></div></div>';
 
   h += '<div class="card"><h3 style="margin-top:0">Basics</h3>';
   h += '<label>Quiz title</label><input type="text" id="f-title" maxlength="120" placeholder="e.g. Is your business ready for a CRM?" value="'+esc(draft.title)+'">';
@@ -177,6 +320,19 @@ function renderBuilder(root){
     el("lead-fields").classList.toggle("hidden",!this.checked);
   });
   el("f-endpoint").addEventListener("input",function(){draft.lead.endpoint=this.value.trim();});
+  el("exp-copy").addEventListener("click",function(){copyText(JSON.stringify(draft,null,2),"Quiz JSON copied");});
+  el("exp-dl").addEventListener("click",function(){
+    var blob=new Blob([JSON.stringify(draft,null,2)],{type:"application/json"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(blob);
+    a.download=(String(draft.title||"quizsift-quiz").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")||"quiz")+".json";
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+  });
+  el("imp-btn").addEventListener("click",function(){
+    var r=importQuiz(el("imp-src").value);
+    if(r.err){el("imp-err").innerHTML='<div class="notice">'+esc(r.err)+'</div>';return;}
+    draft=r.quiz;renderBuilder(root);toast("Quiz loaded into the builder");
+  });
   el("add-q").addEventListener("click",function(){draft.questions.push(newQuestion());drawQuestions();});
   el("add-o").addEventListener("click",function(){draft.outcomes.push({min:0,max:0,title:"",desc:"",cta:null});drawOutcomes();});
   el("publish").addEventListener("click",function(){publish(root);});
@@ -399,6 +555,12 @@ function route(){
     document.title="Build a scored quiz - QuizSift";
     if(landing)landing.classList.add("hidden");
     root.classList.remove("hidden");
+    var im=hash.match(/[?&]import=([A-Za-z0-9_-]+)/);
+    if(im){
+      var r=importQuiz(im[1]);
+      if(!r.err)draft=r.quiz;
+      try{history.replaceState(null,"","#/builder");}catch(e){}
+    }
     renderBuilder(root);
     return;
   }
