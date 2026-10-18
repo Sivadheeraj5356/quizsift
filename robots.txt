@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sivadheeraj5356.github.io/quizsift/sitemap.xml
