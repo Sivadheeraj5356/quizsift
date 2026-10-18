@@ -34,7 +34,7 @@ h3{font-size:20px;margin:24px 0 8px}
 label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
 input[type=text],input[type=url],input[type=email],input[type=number],textarea,select{width:100%;background:var(--panel2);border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:10px 12px;font-size:15px;font-family:inherit}
 textarea{min-height:80px;resize:vertical}
-.row{display:flex;gap:10px;align-items:center}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .row>*{flex:1}
 .qblock{border:1px solid var(--line);border-radius:12px;padding:16px;margin:12px 0;background:var(--panel2)}
 .optrow{display:flex;gap:8px;margin:6px 0;align-items:center}
