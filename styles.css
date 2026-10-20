@@ -1,6 +1,6 @@
 :root{
   --bg:#ffffff; --bg-soft:#f7f7f5; --panel:#ffffff; --panel2:#f4f4f2; --ink:#171717; --muted:#6b7280;
-  --brand:#2563eb; --brand2:#1d4ed8; --accent:#2563eb; --line:#e7e5e0; --warn:#b45309; --ok:#15803d;
+  --brand:#5c2751; --brand2:#471c3f; --accent:#5c2751; --line:#e7e5e0; --warn:#b45309; --ok:#15803d;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -31,7 +31,7 @@ nav.top a:hover{color:var(--ink)}
 .mockbody h4{margin:0 0 6px;font-size:19px;letter-spacing:-.3px}
 .mockbody p.q{margin:0 0 18px;color:var(--muted);font-size:14px}
 .mockopt{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin:8px 0;font-size:15px;color:var(--ink);cursor:default}
-.mockopt.sel{border-color:var(--brand);background:#eff4ff}
+.mockopt.sel{border-color:var(--brand);background:#f3ebf7}
 .mocknote{margin-top:16px;height:8px;border-radius:99px;background:var(--panel2);overflow:hidden}
 .mocknote i{display:block;height:100%;width:64%;background:var(--brand);border-radius:99px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin:14px 0}
@@ -45,7 +45,7 @@ h3{font-size:19px;margin:24px 0 8px;letter-spacing:-.3px}
 .muted{color:var(--muted)}
 .steps{counter-reset:s;list-style:none;padding:0;max-width:760px}
 .steps li{counter-increment:s;margin:16px 0;padding-left:48px;position:relative}
-.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:32px;height:32px;border-radius:50%;background:#eff4ff;border:1px solid #dbe7ff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--brand)}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:32px;height:32px;border-radius:50%;background:#f3ebf7;border:1px solid #e3d2ec;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--brand)}
 label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px;font-weight:500}
 input[type=text],input[type=url],input[type=email],input[type=number],textarea,select{width:100%;background:#fff;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:10px 12px;font-size:15px;font-family:inherit}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:0;border-color:var(--brand)}
