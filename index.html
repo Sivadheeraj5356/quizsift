@@ -11,8 +11,11 @@
 <meta property="og:description" content="Create a scored quiz, share a link, qualify leads with instant outcomes. Free, no signup.">
 <meta property="og:url" content="https://quizsift.vercel.app/">
 <meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#131209">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/geist@latest/index.css">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -25,83 +28,296 @@
   "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
 }
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is QuizSift free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything that exists today is free - no account, no card. Paid ideas like hosted dashboards and analytics are still on the whiteboard."}},
+{"@type":"Question","name":"Do I need to code?","acceptedAnswer":{"@type":"Answer","text":"No. The builder is point and click: questions, points, outcomes, done."}},
+{"@type":"Question","name":"What can I use a scored quiz for?","acceptedAnswer":{"@type":"Answer","text":"Lead qualification, product recommenders, knowledge checks and audience segmentation - anywhere a score tells you who someone is."}},
+{"@type":"Question","name":"Where is my quiz stored?","acceptedAnswer":{"@type":"Answer","text":"Inside its own share link. There is no QuizSift account or database, and scoring runs in the taker's browser."}},
+{"@type":"Question","name":"How do I collect leads?","acceptedAnswer":{"@type":"Answer","text":"Enable lead capture and takers can leave a name and email before their result. Submissions go straight to a form endpoint you own - QuizSift never sees them."}},
+{"@type":"Question","name":"Does it work on phones?","acceptedAnswer":{"@type":"Answer","text":"Yes. The builder and the quizzes run in any modern browser, on phones and desktops."}}]}
+</script>
+<style>
+#landing,.lpnav,.lpoverlay{--lp-bg:#131209;--lp-panel:#1F1F1F;--lp-panel2:#272727;--lp-panel3:#313131;--lp-ink:#FFFFFF;--lp-ink-dim:#9B9B9B;--lp-ink-mute:#6B6B6B;--lp-sage:#A9BF8E;--lp-sage-ink:#131209;--lp-ring:rgba(169,191,142,.55);--lp-ease:cubic-bezier(0.32,0.72,0,1);font-family:'Geist',sans-serif}
+html{background:#131209}
+#landing{background:var(--lp-bg);color:var(--lp-ink);font-size:16px;line-height:24px;-webkit-font-smoothing:antialiased}
+#landing ::selection,.lpnav ::selection{background:var(--lp-sage);color:var(--lp-sage-ink)}
+#landing h1,#landing h2,#landing h3{text-wrap:balance;font-weight:600;letter-spacing:-0.02em;margin:0}
+#landing p{text-wrap:pretty;margin:0}
+#landing a{color:inherit;text-decoration:none}
+#landing a:focus-visible,.lpnav a:focus-visible,.lpnav button:focus-visible,#landing summary:focus-visible{outline:2px solid var(--lp-ring);outline-offset:2px;border-radius:8px}
+.lpskip{position:absolute;left:-9999px;top:0;background:#A9BF8E;color:#131209;padding:8px 12px;border-radius:8px;z-index:200;font-weight:600;font-family:'Geist',sans-serif}
+.lpskip:focus{left:12px;top:12px}
+
+.lpnav{position:fixed;top:24px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 24px);z-index:100;display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(31,31,31,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--lp-panel3);transition:all .7s var(--lp-ease);color:var(--lp-ink);font-size:16px}
+.lpnav .lpbrand{white-space:nowrap;display:flex;align-items:center;gap:8px;font-weight:600;font-size:14px;line-height:20px;padding:4px 8px;color:var(--lp-ink);text-decoration:none}
+.lpnav .lplinks{display:flex;align-items:center;gap:4px}
+.lpnav .lplinks a{font-size:14px;line-height:20px;font-weight:500;color:var(--lp-ink-dim);padding:8px 12px;border-radius:999px;transition:all .7s var(--lp-ease);text-decoration:none}
+.lpnav .lplinks a:hover{color:var(--lp-ink);background:var(--lp-panel2)}
+#landing .lpbtn,.lpnav .lpbtn,.lpoverlay .lpbtn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;font-family:'Geist',sans-serif;font-size:16px;line-height:24px;font-weight:600;padding:8px 12px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:all .7s var(--lp-ease);box-shadow:none;text-decoration:none}
+.lpbtn-sm{font-size:14px !important;line-height:20px !important}
+#landing .lpbtn-accent,.lpnav .lpbtn-accent,.lpoverlay .lpbtn-accent{background:var(--lp-sage);color:var(--lp-sage-ink)}
+#landing .lpbtn-accent:hover,.lpnav .lpbtn-accent:hover,.lpoverlay .lpbtn-accent:hover{background:#b9cba1;transform:translateY(-1px)}
+#landing .lpbtn-ghost,.lpoverlay .lpbtn-ghost{background:transparent;color:var(--lp-ink);border-color:var(--lp-panel3)}
+#landing .lpbtn-ghost:hover{background:var(--lp-panel2)}
+.lpburger{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;border-radius:999px;position:relative}
+.lpburger span{position:absolute;left:10px;width:20px;height:2px;background:var(--lp-ink);transition:all .7s var(--lp-ease)}
+.lpburger span:nth-child(1){top:15px}.lpburger span:nth-child(2){top:23px}
+.lpburger.open span:nth-child(1){top:19px;transform:rotate(45deg)}
+.lpburger.open span:nth-child(2){top:19px;transform:rotate(-45deg)}
+.lpoverlay{position:fixed;inset:0;z-index:90;background:rgba(19,18,9,.8);backdrop-filter:blur(48px);-webkit-backdrop-filter:blur(48px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .7s var(--lp-ease);color:var(--lp-ink)}
+.lpoverlay.open{opacity:1;pointer-events:auto}
+.lpoverlay a{font-size:30px;line-height:36px;font-weight:600;padding:8px 12px;opacity:0;transform:translateY(48px);transition:all .7s var(--lp-ease);color:var(--lp-ink);text-decoration:none}
+.lpoverlay.open a{opacity:1;transform:translateY(0)}
+.lpoverlay.open a:nth-child(1){transition-delay:.08s}.lpoverlay.open a:nth-child(2){transition-delay:.13s}.lpoverlay.open a:nth-child(3){transition-delay:.18s}.lpoverlay.open a:nth-child(4){transition-delay:.23s}.lpoverlay.open a:nth-child(5){transition-delay:.28s}.lpoverlay.open a:nth-child(6){transition-delay:.33s}
+
+#landing section{padding:96px 24px}
+#landing .lpwrap{max-width:1080px;margin:0 auto}
+#landing .lpkicker{font-size:14px;line-height:20px;font-weight:600;color:var(--lp-sage);letter-spacing:.02em;margin-bottom:16px}
+#landing .lph2{font-size:36px;line-height:40px;margin-bottom:16px}
+#landing .lpsub{color:var(--lp-ink-dim);font-size:18px;line-height:28px;max-width:680px}
+
+#landing .lphero{padding-top:176px}
+#landing .lphero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+#landing .lphero h1{font-size:60px;line-height:1;font-weight:600;max-width:680px;margin:0 0 24px;color:var(--lp-ink)}
+#landing .lphero .lpsub{margin:0 0 32px}
+#landing .lphero-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+#landing .lpproof{margin-top:24px;font-size:14px;line-height:20px;color:var(--lp-ink-mute);display:flex;align-items:center;gap:8px}
+#landing .lpproof i{color:var(--lp-sage)}
+
+#landing .lpstage{background:var(--lp-panel);border:1px solid var(--lp-panel3);border-radius:16px;padding:32px 24px;display:flex;flex-direction:column;align-items:center;gap:16px}
+#landing .lpillus{align-self:flex-end;font-size:12px;line-height:16px;font-weight:600;color:var(--lp-ink-mute);border:1px dashed var(--lp-panel3);padding:4px 8px;border-radius:999px}
+#landing .lpphone{width:300px;max-width:100%;background:var(--lp-bg);border:1px solid var(--lp-panel3);border-radius:24px;overflow:hidden;text-align:left}
+#landing .lpphone-top{padding:12px 16px;border-bottom:1px solid var(--lp-panel3);display:flex;align-items:center;justify-content:space-between;font-size:12px;line-height:16px;color:var(--lp-ink-mute)}
+#landing .lpprog{height:8px;background:var(--lp-panel3);border-radius:999px;margin:16px;overflow:hidden}
+#landing .lpprog i{display:block;height:100%;width:64%;background:var(--lp-sage);border-radius:999px}
+#landing .lpphone-body{padding:0 16px 24px}
+#landing .lpphone-body h3{font-size:18px;line-height:28px;margin-bottom:16px}
+#landing .lpopt{display:flex;align-items:center;gap:8px;background:var(--lp-panel2);border:1px solid var(--lp-panel3);border-radius:12px;padding:12px;font-size:14px;line-height:20px;margin-bottom:8px}
+#landing .lpopt.sel{border-color:var(--lp-sage);background:#232B1A}
+#landing .lpopt .lprad{width:12px;height:12px;border-radius:999px;border:2px solid var(--lp-ink-mute);flex:none}
+#landing .lpopt.sel .lprad{border-color:var(--lp-sage);background:var(--lp-sage)}
+#landing .lpresult{margin:16px;background:#232B1A;border:1px solid var(--lp-panel3);border-radius:12px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+#landing .lpresult b{font-size:24px;line-height:32px}
+#landing .lpresult span{font-size:12px;line-height:16px;color:var(--lp-ink-dim)}
+#landing .lpresult .lptier{font-size:12px;line-height:16px;font-weight:600;color:var(--lp-sage-ink);background:var(--lp-sage);padding:4px 8px;border-radius:999px;white-space:nowrap}
+
+#landing .lprows{margin-top:48px;display:flex;flex-direction:column}
+#landing .lpbrow{display:grid;grid-template-columns:48px 1fr 2fr;gap:24px;align-items:baseline;padding:24px 0;border-top:1px solid var(--lp-panel3)}
+#landing .lpbrow:last-child{border-bottom:1px solid var(--lp-panel3)}
+#landing .lpn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:999px;background:var(--lp-sage);color:var(--lp-sage-ink);font-weight:600;font-size:16px}
+#landing .lpbrow h3{font-size:20px;line-height:28px}
+#landing .lpbrow p{color:var(--lp-ink-dim)}
+
+#landing .lpsteps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+#landing .lpstep{background:var(--lp-panel);border:1px solid var(--lp-panel3);border-radius:16px;padding:24px}
+#landing .lpstep .lpn{margin-bottom:16px}
+#landing .lpstep h3{font-size:20px;line-height:28px;margin-bottom:8px}
+#landing .lpstep p{color:var(--lp-ink-dim)}
+
+#landing .lptmpl{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+#landing .lptmpl a{display:inline-flex;align-items:center;gap:8px;background:var(--lp-panel);border:1px solid var(--lp-panel3);border-radius:999px;padding:12px 18px;font-size:14px;font-weight:600;color:var(--lp-ink-dim);transition:all .7s var(--lp-ease)}
+#landing .lptmpl a:hover{color:var(--lp-ink);border-color:var(--lp-sage)}
+#landing .lptmpl a i{color:var(--lp-sage)}
+
+#landing .lptagline{padding:96px 24px;text-align:center}
+#landing .lptagline p{font-size:48px;line-height:1.15;font-weight:600;max-width:800px;margin:0 auto;letter-spacing:-0.02em}
+#landing .lptagline .w{opacity:.3;transition:opacity .8s var(--lp-ease)}
+#landing .lptagline .w.lit{opacity:1}
+
+#landing .lpfaq-list{margin-top:48px;display:flex;flex-direction:column;gap:16px;max-width:760px}
+#landing details{background:var(--lp-panel);border:1px solid var(--lp-panel3);border-radius:12px;padding:16px 24px;transition:all .7s var(--lp-ease)}
+#landing details[open]{background:var(--lp-panel2)}
+#landing summary{cursor:pointer;font-weight:600;font-size:16px;line-height:24px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+#landing summary::-webkit-details-marker{display:none}
+#landing summary i{color:var(--lp-sage);transition:transform .7s var(--lp-ease)}
+#landing details[open] summary i{transform:rotate(45deg)}
+#landing details p{margin-top:12px;color:var(--lp-ink-dim)}
+
+#landing .lpfinal{text-align:center}
+#landing .lpfinal .lph2{max-width:680px;margin-left:auto;margin-right:auto}
+#landing .lpfinal .lpsub{margin:0 auto 32px}
+#landing .lprisk{margin-top:16px;font-size:14px;line-height:20px;color:var(--lp-ink-mute);display:flex;align-items:center;justify-content:center;gap:8px}
+#landing .lprisk i{color:var(--lp-sage)}
+
+#landing .lpfoot{border-top:1px solid var(--lp-panel2);padding:48px 24px}
+#landing .lpfoot-in{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+#landing .lpfoot .lpbrand{display:flex;align-items:center;gap:8px;font-weight:600}
+#landing .lpfoot nav{display:flex;gap:24px;flex-wrap:wrap}
+#landing .lpfoot nav a{font-size:14px;line-height:20px;color:var(--lp-ink-dim);transition:color .7s var(--lp-ease)}
+#landing .lpfoot nav a:hover{color:var(--lp-ink)}
+#landing .lpfoot small{color:var(--lp-ink-mute);font-size:12px;line-height:16px;width:100%}
+
+.rv{opacity:0;transform:translateY(64px);filter:blur(4px);transition:opacity .8s var(--lp-ease,cubic-bezier(0.32,0.72,0,1)),transform .8s var(--lp-ease,cubic-bezier(0.32,0.72,0,1)),filter .8s var(--lp-ease,cubic-bezier(0.32,0.72,0,1))}
+.rv.in{opacity:1;transform:translateY(0);filter:blur(0)}
+
+@media (max-width:860px){
+  .lpnav .lplinks{display:none}
+  .lpburger{display:block}
+  #landing .lpproof i{display:none}
+  #landing .lphero{padding-top:144px}
+  #landing .lphero-grid{grid-template-columns:1fr}
+  #landing .lphero h1{font-size:36px;line-height:40px}
+  #landing .lptagline p{font-size:30px;line-height:36px}
+  #landing .lpbrow{grid-template-columns:48px 1fr;grid-template-rows:auto auto}
+  #landing .lpbrow p{grid-column:2}
+  #landing .lpsteps{grid-template-columns:1fr}
+  #landing section{padding:64px 24px}
+}
+</style>
 </head>
 <body>
-<header class="site"><div class="wrap">
-  <a class="logo" href="index.html">Quiz<b>Sift</b></a>
-  <nav class="top">
-    <a href="free-scoreapp-alternative.html">ScoreApp alternative</a>
-    <a href="typeform-quiz-alternative.html">Typeform alternative</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="blog-ai-search-visibility.html">Blog</a>
-    <a class="btn small" href="index.html#/builder" style="margin-left:6px">Create a quiz</a>
+<a class="lpskip" href="#landing">Skip to content</a>
+
+<header class="lpnav">
+  <a class="lpbrand" href="index.html" aria-label="QuizSift home">
+    <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#A9BF8E"/><circle cx="12" cy="12" r="3" fill="#131209"/><circle cx="20" cy="20" r="3" fill="#131209"/><path d="M13 14l6 5" stroke="#131209" stroke-width="2" stroke-linecap="round"/></svg>
+    QuizSift
+  </a>
+  <nav class="lplinks" aria-label="Primary">
+    <a href="#product">Product</a>
+    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
   </nav>
-</div></header>
+  <a class="lpbtn lpbtn-sm lpbtn-accent" href="index.html#/builder">Build your quiz free</a>
+  <button class="lpburger" id="lpburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<div class="lpoverlay" id="lpoverlay">
+  <a href="#product">Product</a>
+  <a href="#how">How it works</a>
+  <a href="#faq">FAQ</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="blog-ai-search-visibility.html">Blog</a>
+  <a href="index.html#/builder">Build your quiz free</a>
+</div>
 
 <main id="app" class="hidden"></main>
 
 <div id="landing">
-<section class="hero wrap">
-  <h1>Scored quizzes that show you which leads are worth your time</h1>
-  <p class="lede">Build a quiz in minutes. Share it with a link. Every taker gets an instant score and a tailored outcome.</p>
-  <a class="btn" href="index.html#/builder">Build your quiz - free</a>
-  <p class="micro">No account. No card. Your quiz lives in its link.</p>
-</section>
-
-<section class="wrap">
-  <div class="mockframe">
-    <div class="mockbar"><i></i><i></i><i></i></div>
-    <div class="mockbody">
-      <h4>Is your project a fit? Lead qualification scorecard</h4>
-      <p class="q">Question 3 of 5 - Do you have budget set aside for this?</p>
-      <span class="mockopt sel">Yes, approved</span>
-      <span class="mockopt">Roughly, needs sign-off</span>
-      <span class="mockopt">No budget yet</span>
-      <div class="mocknote"><i></i></div>
+<section class="lphero" id="top">
+  <div class="lpwrap">
+    <div class="lphero-grid">
+      <div>
+        <h1>Quizzes that qualify your leads for you</h1>
+        <p class="lpsub">Build a scored quiz in minutes, share one link and give every taker an instant, tailored result. Free, no account - your quiz lives in its link.</p>
+        <div class="lphero-cta">
+          <a class="lpbtn lpbtn-accent" href="index.html#/builder">Build your quiz free <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <p class="lpproof"><i class="ph ph-check-circle" aria-hidden="true"></i> Free · No account · Scoring runs in the taker's browser</p>
+      </div>
+      <div class="lpstage rv" id="product">
+        <span class="lpillus">Illustrative preview</span>
+        <div class="lpphone">
+          <div class="lpphone-top"><span>Which CRM fits your team?</span><span>4 of 6</span></div>
+          <div class="lpprog"><i></i></div>
+          <div class="lpphone-body">
+            <h3>How does your team track deals today?</h3>
+            <div class="lpopt"><span class="lprad"></span> Spreadsheets and memory</div>
+            <div class="lpopt sel"><span class="lprad"></span> A tool nobody updates</div>
+            <div class="lpopt"><span class="lprad"></span> A CRM we actually like</div>
+          </div>
+          <div class="lpresult"><div><b>42</b><br><span>Your score</span></div><span class="lptier">Explorer tier</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="wrap">
-  <h2>How it works</h2>
-  <ol class="steps">
-    <li><b>Write questions and points.</b> Each answer option carries points. Start from a lead-qualification, product-recommendation, or website-audit template, or from scratch.</li>
-    <li><b>Set outcomes by score.</b> "0-6: early stage", "13-20: book a call this week" - each taker lands on the outcome their score earns, with your call to action.</li>
-    <li><b>Share one link.</b> Your quiz is encoded in the link itself, so there is nothing to host and nothing for us to store. Post it anywhere people can click.</li>
-    <li><b>Capture the lead (optional).</b> Ask for name and email before the result. Submissions go straight from the taker's browser to your own form endpoint - they never pass through QuizSift.</li>
-  </ol>
+<section class="lptagline" aria-label="Tagline">
+  <p class="lptagline-text">A form gets ignored. A quiz gets finished.</p>
 </section>
 
-<section class="wrap">
-  <h2>Why a scored quiz instead of a contact form</h2>
-  <div class="grid3">
-    <div class="card"><h3 style="margin-top:0">A reason to engage</h3><p class="muted">People trade a minute of answers for a result that is about them.</p></div>
-    <div class="card"><h3 style="margin-top:0">Qualification built in</h3><p class="muted">Budget, timeline, fit - the answers score themselves, so you spend your time on the leads that scored high.</p></div>
-    <div class="card"><h3 style="margin-top:0">Shareable everywhere</h3><p class="muted">One link works in a bio, a post, an email signature, or a community answer. No embed code required.</p></div>
+<section id="benefits">
+  <div class="lpwrap">
+    <p class="lpkicker">Why QuizSift</p>
+    <h2 class="lph2">A quiz that works harder than a form</h2>
+    <p class="lpsub">Every answer feeds a score, and every score tells you who to talk to next.</p>
+    <div class="lprows">
+      <div class="lpbrow rv"><span class="lpn">1</span><h3>Scored, not static</h3><p>Each answer option carries points, and every score band maps to an outcome you define.</p></div>
+      <div class="lpbrow rv"><span class="lpn">2</span><h3>Made to be shared</h3><p>One link that works in a bio, a post, an email or an ad. The quiz is encoded in the link itself, so there is nothing to host.</p></div>
+      <div class="lpbrow rv"><span class="lpn">3</span><h3>Lead capture on your terms</h3><p>Ask for a name and email before the result. Submissions go from the taker's browser straight to your own form endpoint - never through QuizSift.</p></div>
+      <div class="lpbrow rv"><span class="lpn">4</span><h3>Private by design</h3><p>No accounts and no database on our side. Scoring happens in the taker's browser, not on our servers.</p></div>
+    </div>
   </div>
 </section>
 
-<section class="wrap">
-  <h2>What QuizSift is - and is not</h2>
-  <article class="content">
-  <p>QuizSift is a free, browser-based scored quiz builder. There is no account system and no database on our side: your quiz is stored inside its share link, scoring happens in the taker's browser, and lead capture goes to a form endpoint you choose and control.</p>
-  <p>It is not a full marketing platform. There are no analytics dashboards, no conditional branching, and no built-in CRM. If you need those, established paid tools like ScoreApp, Typeform, Interact or Outgrow offer them. If you need a fast, free way to qualify leads with a scored quiz, that is exactly what this is.</p>
-  </article>
+<section id="how">
+  <div class="lpwrap">
+    <p class="lpkicker">How it works</p>
+    <h2 class="lph2">Live in three steps</h2>
+    <div class="lpsteps">
+      <div class="lpstep rv"><span class="lpn">1</span><h3>Write questions and points</h3><p>Start from a lead-qualification, product-recommendation or website-audit template, or from scratch.</p></div>
+      <div class="lpstep rv"><span class="lpn">2</span><h3>Set outcomes, share one link</h3><p>"0-6: early stage", "13-20: book a call" - then post the link anywhere people can click.</p></div>
+      <div class="lpstep rv"><span class="lpn">3</span><h3>See your qualified leads</h3><p>With lead capture on, each submission lands in your own form endpoint with the score and answers attached.</p></div>
+    </div>
+    <div class="lptmpl">
+      <a href="lead-qualification-quiz.html"><i class="ph ph-file-text" aria-hidden="true"></i> Lead qualification template</a>
+      <a href="product-recommendation-quiz.html"><i class="ph ph-shopping-bag" aria-hidden="true"></i> Product recommendation template</a>
+      <a href="pricing.html"><i class="ph ph-tag" aria-hidden="true"></i> Pricing (it's free)</a>
+    </div>
+  </div>
 </section>
 
-<section class="wrap">
-  <h2>Use cases</h2>
-  <div class="grid2">
-    <div class="card"><h3 style="margin-top:0"><a href="lead-qualification-quiz.html">Lead qualification quiz</a></h3><p class="muted">Score budget, authority, need and timeline before you ever get on a call.</p></div>
-    <div class="card"><h3 style="margin-top:0"><a href="product-recommendation-quiz.html">Product recommendation quiz</a></h3><p class="muted">Route each visitor to the right plan or product based on their answers.</p></div>
+<section id="faq">
+  <div class="lpwrap">
+    <p class="lpkicker">Questions</p>
+    <h2 class="lph2">Asked before, answered here</h2>
+    <div class="lpfaq-list">
+      <details class="rv"><summary>Is QuizSift free?<i class="ph ph-plus" aria-hidden="true"></i></summary><p>Yes. Everything that exists today is free - no account, no card. Paid ideas like hosted dashboards and analytics are still on the whiteboard.</p></details>
+      <details class="rv"><summary>Do I need to code?<i class="ph ph-plus" aria-hidden="true"></i></summary><p>No. The builder is point and click: questions, points, outcomes, done.</p></details>
+      <details class="rv"><summary>What can I use a scored quiz for?<i class="ph ph-plus" aria-hidden="true"></i></summary><p>Lead qualification, product recommenders, knowledge checks and audience segmentation - anywhere a score tells you who someone is.</p></details>
+      <details class="rv"><summary>Where is my quiz stored?<i class="ph ph-plus" aria-hidden="true"></i></summary><p>Inside its own share link. There is no QuizSift account or database, and scoring runs in the taker's browser.</p></details>
+      <details class="rv"><summary>How do I collect leads?<i class="ph ph-plus" aria-hidden="true"></i></summary><p>Enable lead capture and takers can leave a name and email before their result. Submissions go straight to a form endpoint you own - QuizSift never sees them.</p></details>
+      <details class="rv"><summary>Does it work on phones?<i class="ph ph-plus" aria-hidden="true"></i></summary><p>Yes. The builder and the quizzes run in any modern browser, on phones and desktops.</p></details>
+    </div>
   </div>
-  <p style="margin-top:26px"><a class="btn" href="index.html#/builder">Start building</a> <a class="btn ghost" href="pricing.html">See pricing (it's free)</a></p>
 </section>
+
+<section class="lpfinal">
+  <div class="lpwrap">
+    <h2 class="lph2">Let the quiz do the qualifying</h2>
+    <p class="lpsub">Build a scored quiz, share one link and meet the leads who finish it.</p>
+    <a class="lpbtn lpbtn-accent" href="index.html#/builder">Build your quiz free <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+    <p class="lprisk"><i class="ph ph-shield-check" aria-hidden="true"></i> Free. No account. No card.</p>
+  </div>
+</section>
+
+<footer class="lpfoot">
+  <div class="lpfoot-in">
+    <span class="lpbrand"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#A9BF8E"/><circle cx="12" cy="12" r="3" fill="#131209"/><circle cx="20" cy="20" r="3" fill="#131209"/><path d="M13 14l6 5" stroke="#131209" stroke-width="2" stroke-linecap="round"/></svg> QuizSift</span>
+    <nav aria-label="Footer">
+      <a href="index.html#/builder">Create a quiz</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="free-scoreapp-alternative.html">ScoreApp alternative</a>
+      <a href="typeform-quiz-alternative.html">Typeform alternative</a>
+      <a href="blog-ai-search-visibility.html">Blog</a>
+    </nav>
+    <small>© 2026 QuizSift - free scored quiz builder.</small>
+  </div>
+</footer>
 </div>
 
-<footer class="site"><div class="wrap">
-  <p>QuizSift - free scored quiz builder. <a href="pricing.html">Pricing</a> · <a href="privacy.html">Privacy</a> · <a href="free-scoreapp-alternative.html">Free ScoreApp alternative</a> · <a href="typeform-quiz-alternative.html">Free Typeform quiz alternative</a> · <a href="blog-ai-search-visibility.html">Blog</a></p>
-</div></footer>
+<script>
+(function(){
+var burger=document.getElementById('lpburger'),overlay=document.getElementById('lpoverlay');
+burger.addEventListener('click',function(){var open=overlay.classList.toggle('open');burger.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);});
+overlay.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){overlay.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
+
+function lpRoute(){var h=location.hash||'';var app=h.indexOf('#/builder')===0||h.indexOf('#/q/')===0;var nav=document.querySelector('.lpnav');if(nav)nav.style.display=app?'none':'';if(app){overlay.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');}}
+window.addEventListener('hashchange',lpRoute);lpRoute();
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.15});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+var tl=document.querySelector('.lptagline-text');
+if(tl){tl.innerHTML=tl.textContent.trim().split(/\s+/).map(function(w){return '<span class="w">'+w+'</span>';}).join(' ');
+var words=[].slice.call(tl.querySelectorAll('.w'));
+var wio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=words.indexOf(e.target);words.forEach(function(w,j){if(j<=i)setTimeout(function(){w.classList.add('lit');},j*60);});wio.unobserve(e.target);}});},{rootMargin:'0px 0px -35% 0px',threshold:0});
+words.forEach(function(w){wio.observe(w);});}
+})();
+</script>
 <script src="app.js"></script>
 </body>
 </html>
