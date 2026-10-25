@@ -39,7 +39,7 @@
 </script>
 <style>
 #landing,.lpnav,.lpoverlay{--lp-bg:#131209;--lp-panel:#1F1F1F;--lp-panel2:#272727;--lp-panel3:#313131;--lp-ink:#FFFFFF;--lp-ink-dim:#9B9B9B;--lp-ink-mute:#6B6B6B;--lp-sage:#A9BF8E;--lp-sage-ink:#131209;--lp-ring:rgba(169,191,142,.55);--lp-ease:cubic-bezier(0.32,0.72,0,1);font-family:'Geist',sans-serif}
-html{background:#131209}
+body.lp-dark{background:#131209}
 #landing{background:var(--lp-bg);color:var(--lp-ink);font-size:16px;line-height:24px;-webkit-font-smoothing:antialiased}
 #landing ::selection,.lpnav ::selection{background:var(--lp-sage);color:var(--lp-sage-ink)}
 #landing h1,#landing h2,#landing h3{text-wrap:balance;font-weight:600;letter-spacing:-0.02em;margin:0}
@@ -305,7 +305,7 @@ var burger=document.getElementById('lpburger'),overlay=document.getElementById('
 burger.addEventListener('click',function(){var open=overlay.classList.toggle('open');burger.classList.toggle('open',open);burger.setAttribute('aria-expanded',open);});
 overlay.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){overlay.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');});});
 
-function lpRoute(){var h=location.hash||'';var app=h.indexOf('#/builder')===0||h.indexOf('#/q/')===0;var nav=document.querySelector('.lpnav');if(nav)nav.style.display=app?'none':'';if(app){overlay.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');}}
+function lpRoute(){var h=location.hash||'';var app=h.indexOf('#/builder')===0||h.indexOf('#/q/')===0;document.body.classList.toggle('lp-dark',!app);var nav=document.querySelector('.lpnav');if(nav)nav.style.display=app?'none':'';if(app){overlay.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');}}
 window.addEventListener('hashchange',lpRoute);lpRoute();
 
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.15});
