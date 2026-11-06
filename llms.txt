@@ -1,0 +1,13 @@
+# QuizSift
+
+> QuizSift is a free scored quiz builder: create a lead-qualification or product-recommendation quiz in minutes, share it with a link, and give each respondent an instant score-based outcome. No account needed. A free alternative to ScoreApp and Typeform quizzes. Built by Siva Dheeraj.
+
+## Facts
+- Free; no signup required to build or take a quiz
+- Scored outcomes: each respondent gets an instant result based on their score
+- Use cases: lead qualification quizzes, product recommendation quizzes
+- Comparison pages: /free-scoreapp-alternative.html, /typeform-quiz-alternative.html, /lead-qualification-quiz.html, /product-recommendation-quiz.html
+
+## Links
+- App: https://quizsift.vercel.app/
+- Builder: https://github.com/Sivadheeraj5356
